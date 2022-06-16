@@ -108,7 +108,7 @@ header .contacts-header {
   fill: var(--primary-text-color);
 
   transition-property: fill;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -121,7 +121,7 @@ header .contacts-header {
   margin-right: 10px;
   fill: var(--primary-text-color);
   transition-property: fill;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -134,7 +134,7 @@ header .contacts-header {
   letter-spacing: 0.02em;
 
   transition-property: color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -172,7 +172,7 @@ header .contacts-header {
   letter-spacing: 0.02em;
 
   transition-property: color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -228,7 +228,8 @@ header .contacts-header {
 
 }
 
-button {
+.main-button,
+.filter-button {
   position: center;
   font-family: inherit;
   cursor: pointer;
@@ -236,10 +237,10 @@ button {
   border-radius: 4px;
 }
 
-button:hover,
-button:focus {
+.main-button:hover,
+.main-button:focus {
   background-color: var(--accent);
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .main-button {
@@ -484,7 +485,7 @@ button:focus {
   align-items: center;
 
   transition-property: background-color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -509,7 +510,7 @@ button:focus {
   fill: var(--icon-primary-color);
 
   transition-property: fill;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -533,7 +534,7 @@ button:focus {
   align-items: center;
 
   transition-property: border-color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -541,7 +542,7 @@ button:focus {
   fill: var(--icon-primary-color);
 
   transition-property: fill;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -574,6 +575,7 @@ footer {
 footer>.container {
   padding: 0 15px;
   display: flex;
+  align-items: baseline;
 }
 
 .contact-info {
@@ -600,7 +602,7 @@ footer>.container {
   font-style: normal;
 
   transition-property: color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -637,7 +639,6 @@ footer>.container {
 
 
 .join-us {
-  margin-top: 12px;
   margin-left: 70px;
 }
 
@@ -668,7 +669,7 @@ footer>.container {
   align-items: center;
 
   transition-property: background-color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -676,7 +677,7 @@ footer>.container {
   fill: #FFFFFF;
 
   transition-property: fill;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -695,49 +696,52 @@ footer>.container {
 
 
 /* modal */
+
+
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
 
-  background-color: rgba(0, 0, 0, 0.2);;
-
-}
-
-
-.backdrop.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-
-  transition-property: opacity, visibility, pointer-events;  transition-duration: 2000ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.backdrop {
   opacity: 1;
 
-  transition-property: opacity, visibility, pointer-events;
-  transition-duration: 2000ms;
+  transition-property: opacity;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+}
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 528px;
-  min-height: 521px;
 
-  background-color: #FFFFFF;
+  min-height: 528px;
+  min-width: 521px;
+
   border-radius: 4px;
+
+  background-color: #fff;
+
+  transform: translate(-50%, -50%) scale(1.0);
+
+  transition-property: transform, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .close-btn {
   position: absolute;
@@ -753,77 +757,31 @@ footer>.container {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: border-color, fill, cursor;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
 .close-btn-icon {
-  /* width: 30px;
-  height: 30px; */
-
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
+.close-btn:hover,
+.close-btn:focus {
+  border-color: var(--accent);
+  background-color: #FFF;
+  cursor: pointer;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.close-btn:hover .close-btn-icon,
+.close-btn:focus .close-btn-icon {
+  fill: var(--accent);
+}
 
 
 
@@ -857,13 +815,16 @@ footer>.container {
   letter-spacing: 0.03em;
 
   transition-property: color, background-color, box-shadow;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
+
 .filter-button:hover,
 .filter-button:focus {
+  background-color: var(--accent);
+  color: #FFFFFF;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
   box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
@@ -899,7 +860,7 @@ footer>.container {
   margin-left: 30px;
 
   transition-property: box-shadow;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -926,7 +887,7 @@ footer>.container {
   transform: translateY(100%);
 
   transition-property: transform;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* transform: translatex(-100%);
@@ -957,41 +918,9 @@ footer>.container {
 }
 
 
-
-
-
-
-
-
-span {
+.project-list span {
   display: inline-block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Можно также посчитать ширину карточки по формуле ниже, но при этом нужно НЕ задавать margin крайним правым и трем нижним элементам.
 При этом нужно удалить margins в селекторах .project-list и .project-list-item и использовать свойства ниже */
@@ -1025,10 +954,6 @@ span {
   display: block;
 }
 
-
-
-
-
 .project-name:hover,
 .project-name:focus,
 .project-type:hover,
@@ -1046,7 +971,7 @@ span {
   letter-spacing: 0.06em;
 
   transition-property: color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1058,7 +983,7 @@ span {
   letter-spacing: 0.03em;
 
   transition-property: color;
-  transition-duration: 2000ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
